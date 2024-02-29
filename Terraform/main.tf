@@ -95,7 +95,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.15.3"
 
-  cluster_name    = "mycluster"
+  cluster_name    = "arbelcluster"
   cluster_version = "1.27"
 
   create_iam_role = true
