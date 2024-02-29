@@ -1,7 +1,5 @@
 provider "aws" {
     region =  "eu-central-1"
-    access_key = "AKIARLJUM4GFTVFIYEM4"
-    secret_key = "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"
 }
 
 ### VPC
@@ -47,7 +45,6 @@ resource "aws_internet_gateway" "gw" {
 }
 
 ### SG
-
 resource "aws_security_group" "sg" {
   name        = "my_sg"
   description = "Allow all inbound traffic"
@@ -101,8 +98,8 @@ module "eks" {
   cluster_name    = "mycluster"
   cluster_version = "1.27"
 
-  create_iam_role = false
-  iam_role_arn = "arn:aws:iam::092988563851:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
+  create_iam_role = true
+  #iam_role_arn = "arn:aws:iam::092988563851:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
 
   vpc_id                         = aws_vpc.main.id
   subnet_ids                     = aws_subnet.private_subnets[*].id
